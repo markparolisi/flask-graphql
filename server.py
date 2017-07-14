@@ -1,19 +1,27 @@
 #!/usr/bin/env python 
 
-
 from flask import Flask
-from graphene import ObjectType, String, Schema
 from flask_graphql import GraphQLView
 
-class Query(ObjectType):
-    hello = String(description='Hello')
-    def resolve_hello(self, args, context, info):
-        return 'World'
-
-view_func = GraphQLView.as_view('graphql', schema=Schema(query=Query))
+from models import db_session
+from schema import schema
 
 app = Flask(__name__)
-app.add_url_rule('/', view_func=view_func)
+app.debug = True
+
+app.add_url_rule(
+    '/',
+    view_func=GraphQLView.as_view(
+        'graphql',
+        schema=schema,
+        graphiql=True # for having the GraphiQL interface
+    )
+)
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()
 
 if __name__ == '__main__':
     app.run()
+
