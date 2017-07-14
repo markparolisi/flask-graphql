@@ -24,6 +24,23 @@
     }
     ```
 
+    ```
+    {
+      department(id:"RGVwYXJ0bWVudDox"){
+        id
+        name
+        employees {
+          edges{
+            node {
+              name
+              hiredOn
+            }
+          }
+        }
+      }
+    }
+    ```
+
 ## Code Quality
 
 - Pylint `pylint flask-graphql`
