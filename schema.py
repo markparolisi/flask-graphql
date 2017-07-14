@@ -5,13 +5,13 @@ from models import Department as DepartmentModel, Employee as EmployeeModel
 
 
 class Department(SQLAlchemyObjectType):
-    class Meta:
+    class Meta(object):
         model = DepartmentModel
         interfaces = (relay.Node, )
 
 
 class Employee(SQLAlchemyObjectType):
-    class Meta:
+    class Meta(object):
         model = EmployeeModel
         interfaces = (relay.Node, )
 
