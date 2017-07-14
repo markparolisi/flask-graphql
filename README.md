@@ -27,4 +27,4 @@
 ## Code Quality
 
 - Pylint `pylint flask-graphql`
-- PyUnit
+- Nose Unit Tests `nosetests tests/`

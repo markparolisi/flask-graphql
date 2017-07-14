@@ -1,4 +1,5 @@
 pylint
+nose
 flask==0.12.2
 graphene==1.4.1
 flask-graphql==1.4.1
